@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Declaring character encoding as UTF-8 for proper text rendering -->
+    <meta charset="UTF-8" />
+    
+    <!-- Ensuring the page is responsive on different screen sizes -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Setting the title of the page that appears on the browser tab -->
+    <title>Forgot Password | Foodie</title>
+
+    <!-- Preconnecting to Google's font API for faster font loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Importing Google Fonts (Nunito and Poppins) to be used in the page -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
+      rel="stylesheet"
+    />
+    
+    <!-- Adding a shortcut icon (favicon) to display in browser tabs -->
+    <link rel="shortcut icon" href="../images/fav.png" type="image/x-icon">
+
+    <!-- Internal CSS to style the page -->
+    <style>
+      /* Universal styles: Reset margin and padding, and apply border-box sizing */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* Body styling for full-page background and centering content */
+      body {
+        display: flex; /* Using Flexbox for easy centering */
+        align-items: center; /* Vertically centering the content */
+        justify-content: flex-start; /* Aligning content to the start of the page */
+        font-family: "Poppins", serif; /* Using Poppins font for better typography */
+        width: 100%;
+        min-height: 100vh; /* Ensures body covers the full height of the viewport */
+        background: url(./assets/forgott.JPEG); /* Background image */
+        background-size: cover; /* Ensures the background image covers the entire page */
+        background-position: center; /* Centers the background image */
+      }
+
+      /* Styling for the main login container with a backdrop filter */
+      .mainLogin {
+        width: 400px; /* Width of the login container */
+        padding: 30px; /* Padding inside the container */
+        margin-top: auto; /* Pushes the container towards the bottom */
+        margin-right: 70px; /* Adds space from the right */
+        margin-bottom: auto; /* Pushes the container towards the top */
+        border: 3px solid black; /* Black border around the container */
+        backdrop-filter: blur(10px); /* Applies a blur effect to the background */
+        border-radius: 8px; /* Rounded corners for the container */
+        display: grid; /* Grid display for the content */
+        color: white; /* White text inside the container */
+        position: absolute; /* Absolutely positioned for precise placement */
+        right: 0; /* Positioned to the right of the page */
+      }
+
+      /* Styling the form inside the login container */
+      form {
+        display: flex; /* Using Flexbox to organize form items */
+        flex-direction: column; /* Aligning children (input, button) vertically */
+        gap: 10px; /* Space between form elements */
+      }
+
+      /* Styling for the heading */
+      .heading {
+        text-align: center; /* Center-aligning the heading */
+        color: #1f1f1f; /* Dark gray color for the heading */
+      }
+
+      /* Styling the main heading (h2) */
+      .heading h2 {
+        color: #1f1f1f; /* Dark gray color for the heading */
+      }
+
+      /* Hover effect on the heading */
+      .heading h2:hover {
+        color: #515050; /* Darker gray on hover */
+      }
+
+      /* Styling for input fields within the form */
+      .inputField {
+        position: relative; /* Relative positioning for label and input */
+        border-bottom: 2px solid #272626; /* Bottom border for input field */
+        margin: 8px 0; /* Vertical margin between input fields */
+      }
+
+      /* Styling for the label inside the input fields */
+      .inputField label {
+        font-size: 18px; /* Font size of the label */
+        font-weight: 600; /* Semi-bold weight for the label */
+        color: black; /* Black color for the label */
+      }
+
+      /* Styling for input fields */
+      .inputField input {
+        width: 100%; /* Full width of the input field */
+        height: 40px; /* Fixed height for input */
+        background: transparent; /* Transparent background */
+        border: none; /* Removing borders */
+        outline: none; /* Removing default focus outline */
+        color: black; /* Black text color */
+        font-size: 20px; /* Larger font size */
+      }
+
+      /* Styling for the submit button */
+      button {
+        width: 100%; /* Full width of the button */
+        background-color: #1f1f1f; /* Dark background color */
+        color: white; /* White text color */
+        font-size: 15px; /* Font size for the button text */
+        font-weight: 600; /* Semi-bold text */
+        padding: 12px 20px; /* Padding for button */
+        border-radius: 3px; /* Rounded corners */
+        border: 2px solid transparent; /* Border with transparent color */
+        cursor: pointer; /* Pointer cursor on hover */
+        transition: 0.3s ease; /* Smooth transition for hover effect */
+      }
+
+      /* Hover effect for the button */
+      button:hover {
+        background-color: #323131; /* Darken the background on hover */
+        border-color: #2a2929; /* Change border color on hover */
+        color: white; /* Ensures text stays white */
+      }
+
+      /* Styling for the cancel button */
+      .cancelButton {
+        display: inline-block; /* Allows inline behavior */
+        width: 100%; /* Full width of the button */
+        text-align: center; /* Center-aligns the text inside the button */
+        background-color: white; /* White background for the cancel button */
+        color: #1f1f1f; /* Dark text color */
+        font-size: 15px; /* Font size for the cancel button text */
+        font-weight: 600; /* Semi-bold text */
+        padding: 12px 20px; /* Padding inside the cancel button */
+        border-radius: 3px; /* Rounded corners */
+        border: 2px solid transparent; /* Transparent border */
+        cursor: pointer; /* Pointer cursor on hover */
+        transition: 0.3s ease; /* Smooth transition effect */
+        text-decoration: none; /* Removes default underline */
+      }
+
+      /* Hover effect for the cancel button */
+      .cancelButton:hover {
+        background-color: #1f1f1f; /* Dark background on hover */
+        border-color: #2a2929; /* Darker border on hover */
+        color: white; /* Text turns white */
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Main login container with form -->
+    <div class="mainLogin">
+      <!-- Form for the forgot password functionality -->
+      <form id="form">
+        <!-- Heading section -->
+        <div class="heading">
+          <h2>Forgot Password?</h2>
+        </div>
+
+        <!-- Input field for entering email (username) -->
+        <div class="inputField">
+          <label>Enter Username:</label><br />
+          <input type="email" id="loginEmail" placeholder="Email" />
+        </div>
+
+        <!-- Submit button for sending password reset email -->
+        <button id="reset">Send Verification Mail</button>
+
+        <!-- Link to cancel the process and go back to login page -->
+        <a href="login.html" class="cancelButton">Cancel</a>
+      </form>
+    </div>
+
+    <!-- Firebase Integration for password reset -->
+    <script type="module">
+      // Importing necessary Firebase modules
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+      import {
+        getAuth,
+        sendPasswordResetEmail,
+      } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
+
+      // Firebase configuration object with API key and other details
+      const firebaseConfig = {
+        apiKey: "AIzaSyA4MvrK7a2o-UZ2yIvhzfpEJKtUcIJVF2E",
+        authDomain: "food-recipe-e3888.firebaseapp.com",
+        projectId: "food-recipe-e3888",
+        storageBucket: "food-recipe-e3888.firebasestorage.app",
+        messagingSenderId: "479682801897",
+        appId: "1:479682801897:web:de37363b938d7bfb800078",
+      };
+
+      // Initialize Firebase with the config object
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+
+      // Reset button click event listener
+      const reset = document.getElementById("reset");
+      reset.addEventListener("click", function (event) {
+        event.preventDefault(); // Prevents the default form submission
+
+        // Retrieving the entered email from the input field
+        const email = document.getElementById("loginEmail").value;
+
+        // Sending password reset email through Firebase Authentication
+        sendPasswordResetEmail(auth, email)
+          .then(() => {
+            // If email is sent successfully, show a success alert
+            alert("email sent");
+            window.location.href = "./login.html"; // Redirect to login page after successful reset
+          })
+          .catch((error) => {
+            // Handling error in case the email sending fails
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            alert(errorMessage); // Display the error message
+          });
+      });
+    </script>
+  </body>
+</html>

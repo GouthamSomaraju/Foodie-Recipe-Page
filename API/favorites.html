@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Setting the character encoding to UTF-8 for proper text rendering -->
+    <meta charset="UTF-8" />
+    
+    <!-- Ensures that the webpage is responsive and adjusts to different screen sizes -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Title of the webpage as seen in the browser tab -->
+    <title>Favorites | Foodie</title>
+    <link rel="shortcut icon" href="../images/fav.png" type="image/x-icon">
+    <!-- Link to an external Bootstrap stylesheet for styling the page components -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    
+    <style>
+      /* Styling for the body, setting the font family, background image, and text color */
+      body {
+        font-family: "Poppins", sans-serif;
+        color: #fff;
+        padding: 0;
+        margin: 0;
+        background: url(./1000155946-01.jpeg); /* Background image */
+        background-size: cover; /* Ensures the background image covers the full page */
+        background-position: center; /* Centers the background image */
+        background-attachment: fixed; /* Keeps the background fixed while scrolling */
+        text-align: center; /* Centers the text horizontally */
+      }
+
+      /* Styling for the container of the recipe cards */
+      .recipes {
+        display: flex; /* Makes the container a flexbox */
+        flex-wrap: wrap; /* Allows the items to wrap to new lines */
+        justify-content: center; /* Centers the content */
+        gap: 20px; /* Adds space between the cards */
+        margin-top: 40px; /* Adds space above the container */
+      }
+
+      /* Styling for each individual recipe card */
+      .recipe-card {
+        width: 250px; /* Defines the width of each card */
+        background: #fff; /* White background for the card */
+        color: #333; /* Dark text color */
+        padding: 20px; /* Padding inside the card */
+        border-radius: 10px; /* Rounded corners */
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow around the card */
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effect */
+        cursor: pointer; /* Changes cursor to pointer on hover */
+      }
+
+      /* Hover effect for the recipe card, elevating it slightly */
+      .recipe-card:hover {
+        transform: translateY(-10px); /* Moves the card up when hovered */
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Increases the shadow for a popping effect */
+      }
+
+      /* Styling for the image inside the recipe card */
+      .recipe-card img {
+        width: 100%; /* Makes the image span the full width of the card */
+        height: 160px; /* Fixed height for the image */
+        border-radius: 8px; /* Rounded corners for the image */
+        object-fit: cover; /* Ensures the image covers the space without distorting */
+        margin-bottom: 15px; /* Adds space below the image */
+      }
+
+      /* Styling for the title inside the recipe card */
+      .recipe-card h3 {
+        font-size: 18px; /* Sets the font size */
+        font-weight: 600; /* Makes the title bold */
+        color: #333; /* Dark color for the title */
+        margin-bottom: 10px; /* Adds space below the title */
+      }
+
+      /* Styling for the description inside the recipe card */
+      .recipe-card p {
+        font-size: 14px; /* Sets the font size for the paragraph */
+        color: #555; /* Slightly lighter color for description */
+        margin-bottom: 15px; /* Adds space below the paragraph */
+      }
+
+      /* Styling for the button inside the recipe card */
+      .recipe-card button {
+        padding: 6px 14px; /* Adds padding around the button text */
+        background: rgb(91, 167, 91); /* Green background for the button */
+        color: #fff; /* White text color */
+        border-radius: 5px; /* Rounded corners for the button */
+        border: 0; /* Removes border */
+        text-align: center; /* Centers the text inside the button */
+        cursor: pointer; /* Pointer cursor on hover */
+        transition: background-color 0.3s ease; /* Smooth transition for background color */
+      }
+
+      /* Hover effect for the button */
+      .recipe-card button:hover {
+        background: rgb(73, 141, 73); /* Darker green on hover */
+      }
+
+      /* Styling for the popup card that shows recipe details */
+      .popup-card {
+        background: #fff; /* White background */
+        position: fixed; /* Fixed position for the popup */
+        top: 50%; /* Centers the popup vertically */
+        left: 50%; /* Centers the popup horizontally */
+        transform: translate(-50%, -50%); /* Centers the popup with transform */
+        padding: 30px; /* Adds padding inside the popup */
+        border-radius: 12px; /* Rounded corners */
+        width: 350px; /* Width of the popup */
+        height: 450px; /* Height of the popup */
+        display: none; /* Initially hidden */
+        z-index: 1000; /* Makes sure it appears above other elements */
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Adds shadow to the popup */
+      }
+
+      /* Styling for the title inside the popup card */
+      .popup-card h3 {
+        margin: 12px 0; /* Adds margin above and below the title */
+        color: #333; /* Dark color for the title */
+        font-size: 24px; /* Larger font size for the title */
+        font-weight: 600; /* Bold title */
+      }
+
+      /* Styling for the description inside the popup */
+      .popup-card p {
+        color: #333; /* Dark color for the text */
+        font-size: 16px; /* Sets the font size */
+        line-height: 1.6; /* Increases line spacing */
+        max-height: 300px; /* Limits the height of the paragraph */
+        overflow-y: auto; /* Adds a scrollbar if content overflows */
+        padding-right: 10px; /* Adds space on the right side of the text */
+      }
+
+      /* Styling for the close button inside the popup card */
+      .close-btn {
+        width: 30px; /* Sets the width of the close button */
+        position: absolute; /* Positions it at the top-right corner */
+        top: 15px; /* 15px from the top */
+        right: 15px; /* 15px from the right */
+        background: rgb(227, 46, 46); /* Red background for the button */
+        padding: 8px; /* Padding inside the button */
+        border: 0; /* Removes border */
+        border-radius: 6px; /* Rounded corners for the button */
+        color: #fff; /* White text color */
+        cursor: pointer; /* Pointer cursor on hover */
+        transition: background-color 0.3s ease; /* Smooth transition for background color */
+      }
+
+      /* Hover effect for the close button */
+      .close-btn:hover {
+        background: rgb(255, 80, 80); /* Lighter red when hovered */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Title for the page -->
+    <h1>Your Favorite Recipes</h1>
+    
+    <!-- Container for holding the favorite recipe cards -->
+    <div class="recipes" id="favorites-container"></div>
+
+    <!-- Popup card that shows detailed information about the recipe -->
+    <div class="popup-card" id="popupCard">
+      <!-- Close button for the popup -->
+      <button class="close-btn" onclick="closeRecipe()">X</button>
+      <!-- Title and description will be dynamically inserted here -->
+      <h3 id="recipeTitle"></h3>
+      <p id="recipeDetails"></p>
+    </div>
+
+    <script>
+      // Function to display favorite recipes stored in local storage
+      function displayFavorites() {
+        // Get the 'favorites' array from localStorage or set it to an empty array if not found
+        const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+        const container = document.getElementById("favorites-container");
+
+        // If there are no favorite recipes, show a message
+        if (favorites.length === 0) {
+          container.innerHTML = "<p>No favorite recipes yet!</p>";
+        } else {
+          // Loop through the favorites and create recipe cards for each one
+          favorites.forEach((item) => {
+            const card = document.createElement("div");
+            card.classList.add("recipe-card");
+            card.innerHTML = `
+              <img src="${item.image}" alt="${item.name}" />
+              <h3>${item.name}</h3>
+              <button class="view-more-btn" onclick="viewRecipe('${item.id}')">View More</button>
+            `;
+            container.appendChild(card); // Append the card to the container
+          });
+        }
+      }
+
+      // Function to show details for a selected recipe
+      function viewRecipe(mealId) {
+        const popupCard = document.getElementById("popupCard");
+        const recipeTitle = document.getElementById("recipeTitle");
+        const recipeDetails = document.getElementById("recipeDetails");
+
+        // Fetch recipe details from the API using the mealId
+        fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`)
+          .then((response) => response.json())
+          .then((data) => {
+            const meal = data.meals[0];
+            recipeTitle.innerText = meal.strMeal; // Set the recipe title
+            recipeDetails.innerText = meal.strInstructions; // Set the recipe instructions
+            popupCard.style.display = "block"; // Display the popup card
+          });
+      }
+
+      // Function to close the popup card
+      function closeRecipe() {
+        document.getElementById("popupCard").style.display = "none"; // Hides the popup card
+      }
+
+      // Call the function to display the favorites when the page loads
+      displayFavorites();
+    </script>
+  </body>
+</html>

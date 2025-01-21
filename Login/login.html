@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Set character encoding to UTF-8 to ensure proper text rendering -->
+    <meta charset="UTF-8" />
+    
+    <!-- Make the page responsive by setting the viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Page title that will show up in the browser tab -->
+    <title>Sign In | Foodie</title>
+
+    <!-- Preconnect to external font provider (Google Fonts) for faster font loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Import fonts (Nunito and Poppins) for the page styling -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    
+    <!-- Adding a shortcut icon (favicon) to the browser tab -->
+    <link rel="shortcut icon" href="../images/fav.png" type="image/x-icon">
+    
+    <!-- Internal CSS to style the page layout -->
+    <style>
+      /* Universal selector to reset margin and padding, and apply box-sizing border-box globally */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* Body styles for full screen with a background image and centered content */
+      body {
+        display: flex; /* Using Flexbox for easy centering */
+        align-items: center; /* Vertically centers content */
+        justify-content: flex-start; /* Aligns content to the left */
+        font-family: "Poppins", serif; /* Poppins font family for the page */
+        width: 100%; /* Full width */
+        min-height: 100vh; /* Minimum height to cover the full viewport */
+        background: url(./assets/rename.JPEG); /* Background image */
+        background-size: cover; /* Ensures background image covers the full screen */
+        background-position: center; /* Centers the background image */
+      }
+
+      /* Main login box styling */
+      .mainLogin {
+        width: 400px; /* Fixed width for the login form */
+        padding: 30px; /* Padding inside the form */
+        margin-top: auto; /* Auto margin on top to center it vertically */
+        margin-right: 70px; /* Right margin to shift form */
+        margin-bottom: auto; /* Auto margin on the bottom for vertical centering */
+        border: 3px solid black; /* Black border around the form */
+        backdrop-filter: blur(10px); /* Adds a blur effect to the background */
+        border-radius: 8px; /* Rounded corners */
+        display: grid; /* Grid layout */
+        color: white; /* Text color inside the form */
+        position: absolute; /* Absolute positioning for precise layout */
+        right: 0; /* Positioned to the right of the page */
+      }
+
+      /* Heading section: flex display to center the content */
+      .heading {
+        display: flex;
+        justify-content: center; /* Centers the heading horizontally */
+        gap: 10px; /* Adds space between items */
+        color: #1f1f1f; /* Dark gray color for text */
+      }
+
+      /* Styling for heading links (Sign Up and Sign In) */
+      .heading a {
+        text-decoration: none; /* Removes default underline */
+        color: #1f1f1f; /* Dark gray color for links */
+      }
+
+      /* Hover effect for heading links */
+      .heading a:hover {
+        color: #515050; /* Darker gray on hover */
+      }
+
+      /* Styling for the pipe separator between "Sign Up" and "Sign In" */
+      .heading #space {
+        font-size: 25px; /* Larger font size */
+        color: black; /* Black color */
+      }
+
+      /* Form layout (flex column) */
+      form {
+        display: flex;
+        flex-direction: column; /* Stack form elements vertically */
+      }
+
+      /* Styling for individual input fields */
+      .inputField {
+        position: relative; /* Relative positioning for label/input */
+        border-bottom: 2px solid #272626; /* Border at the bottom of the input field */
+        margin: 8px 0; /* Vertical margin between fields */
+      }
+
+      /* Styling for input fields (Email and Password) */
+      .inputField input {
+        width: 100%; /* Full width for input fields */
+        height: 40px; /* Fixed height */
+        background: transparent; /* Transparent background */
+        border: none; /* No border */
+        outline: none; /* No outline on focus */
+        color: black; /* Black text color */
+        font-size: 20px; /* Font size for input text */
+      }
+
+      /* Label styling for the input fields */
+      .inputField label {
+        font-size: 18px; /* Font size for labels */
+        font-weight: 600; /* Semi-bold weight for labels */
+        color: black; /* Black color for labels */
+      }
+
+      /* Styling for password visibility toggle section */
+      .showPassword {
+        display: flex; /* Flex layout for the checkbox and text */
+        justify-content: space-between; /* Spread out the items */
+        margin: 25px 0 35px 0; /* Vertical margin */
+        color: black; /* Black text color */
+        font-weight: 600; /* Semi-bold text */
+      }
+
+      /* Styling for the text next to the checkbox */
+      .showPassword p {
+        margin-left: 8px; /* Left margin for spacing */
+        font-size: 16px; /* Font size for "Show Password" text */
+      }
+
+      /* Styling for the "Show Password" checkbox */
+      .showPassword .checkbox {
+        display: flex; /* Flex layout for checkbox */
+      }
+
+      /* Styling for the "Forgot Password" link */
+      .showPassword a {
+        color: #1f1f1f; /* Dark gray color for the link */
+      }
+
+      /* Styling for the Sign In button */
+      button {
+        width: 100%; /* Full width for the button */
+        background-color: #1f1f1f; /* Dark background color */
+        color: white; /* White text color */
+        font-size: 15px; /* Font size */
+        font-weight: 600; /* Semi-bold text */
+        padding: 12px 20px; /* Padding for the button */
+        border-radius: 3px; /* Rounded corners */
+        border: 2px solid transparent; /* Transparent border */
+        cursor: pointer; /* Pointer cursor on hover */
+        transition: 0.3s ease; /* Smooth transition effect */
+      }
+
+      /* Hover effect for the Sign In button */
+      button:hover {
+        background-color: #323131; /* Darken the background on hover */
+        border-color: #2a2929; /* Dark border on hover */
+        color: white; /* Keep text color white */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Main login container -->
+    <div class="mainLogin">
+      <!-- Login form -->
+      <form id="form">
+        <!-- Heading with links to Sign Up and Sign In pages -->
+        <div class="heading">
+          <a href="signup.html"><h2>Sign Up</h2></a> <!-- Link to sign up page -->
+          <h2 id="space">|</h2> <!-- Pipe separator -->
+          <a href="login.html"><h2 style="text-decoration: underline;">Sign In</h2></a> <!-- Current page (Sign In) -->
+        </div>
+
+        <!-- Input field for email (username) -->
+        <div class="inputField">
+          <label>Enter Username:</label><br />
+          <input type="email" id="loginEmail" placeholder="Email" />
+        </div>
+
+        <!-- Input field for password -->
+        <div class="inputField">
+          <label for="password">Enter Password:</label><br />
+          <input type="password" id="loginPassword" placeholder="Password" />
+        </div>
+
+        <!-- Section for showing password and "Forgot Password?" link -->
+        <div class="showPassword">
+          <div class="checkbox">
+            <input type="checkbox" id="checkboxip" />
+            <p id="getPassword">Show Password</p> <!-- Text next to checkbox -->
+          </div>
+          <a href="forgotpass.html" id="reset">Forgot Password?</a> <!-- Link to reset password -->
+        </div>
+
+        <!-- Sign In button -->
+        <button type="submit" id="signInBtn">Sign In</button>
+      </form>
+    </div>
+
+    <!-- Script for handling Firebase authentication and password visibility -->
+    <script type="module">
+      // Import necessary Firebase modules for authentication and Firestore
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+      import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
+      import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
+
+      // Firebase configuration object (replace with your Firebase project details)
+      const firebaseConfig = {
+        apiKey: "AIzaSyA4MvrK7a2o-UZ2yIvhzfpEJKtUcIJVF2E",
+        authDomain: "food-recipe-e3888.firebaseapp.com",
+        projectId: "food-recipe-e3888",
+        storageBucket: "food-recipe-e3888.appspot.com",
+        messagingSenderId: "479682801897",
+        appId: "1:479682801897:web:de37363b938d7bfb800078",
+      };
+
+      // Initialize Firebase with the configuration
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+      const db = getFirestore(app);
+
+      // Handle form submission for sign-in
+      const form = document.getElementById("form");
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault(); // Prevent form submission and page reload
+
+        // Get email and password values from the form
+        const email = document.getElementById("loginEmail").value.trim();
+        const password = document.getElementById("loginPassword").value.trim();
+
+        try {
+          // Sign in the user using Firebase Authentication
+          const userCredential = await signInWithEmailAndPassword(auth, email, password);
+          const user = userCredential.user;
+
+          // Fetch user data from Firestore
+          const docRef = doc(db, "users", user.uid);
+          const docSnap = await getDoc(docRef);
+
+          if (docSnap.exists()) {
+            const userData = docSnap.data(); // Get user data from Firestore
+            console.log("User data:", userData); // Debugging output
+
+            // Store user data in localStorage for use in other pages
+            localStorage.setItem("userData", JSON.stringify(userData));
+            // Redirect to the main search page after successful sign-in
+            window.location.href = "../API/searchPage.html";
+          } else {
+            console.error("No user data found!"); // If no data is found in Firestore
+            alert("No user data found!");
+          }
+        } catch (error) {
+          // Handle any errors during login
+          console.error("Login error:", error.message);
+          alert(`Login failed: ${error.message}`);
+        }
+      });
+
+      // Show/hide password functionality
+      let passwordCheck = document.getElementById("loginPassword");
+      let checkbox = document.getElementById("checkboxip");
+      let showPassword = document.getElementById("getPassword");
+
+      checkbox.addEventListener("change", function () {
+        // Toggle password visibility based on checkbox status
+        if (checkbox.checked) {
+          passwordCheck.type = "text"; // Change input type to text to show password
+          showPassword.textContent = "Hide Password"; // Change text next to checkbox
+        } else {
+          passwordCheck.type = "password"; // Change input type back to password
+          showPassword.textContent = "Show Password"; // Reset text next to checkbox
+        }
+      });
+    </script>
+  </body>
+</html>

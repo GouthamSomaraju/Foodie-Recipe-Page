@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Declaring the character encoding for the document -->
+  <meta charset="UTF-8">
+  
+  <!-- Ensuring responsive design on all devices by setting viewport properties -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Title of the webpage that will appear in the browser tab -->
+  <title>Search Food | Foodie</title>
+  
+  <!-- Setting a shortcut icon for the page (favicon) displayed on browser tabs -->
+  <link rel="shortcut icon" href="../images/fav.png" type="image/x-icon">
+  
+  <!-- Internal CSS Styles -->
+  <style>
+    /* Applying universal box model settings for the page */
+    * {
+      margin: 0; /* Removes default margin from all elements */
+      padding: 0; /* Removes default padding from all elements */
+      box-sizing: border-box; /* Ensures padding and border are included in element's width/height */
+    }
+
+    /* Body styling to set the background, center content, and apply font */
+    body {
+      display: flex; /* Using flexbox for centering the content vertically and horizontally */
+      flex-direction: column; /* Aligning children elements (header, search container) vertically */
+      justify-content: center; /* Centering content vertically */
+      align-items: center; /* Centering content horizontally */
+      height: 100vh; /* Full viewport height */
+      background-color: #f0f0f0; /* Light background color */
+      font-family: Arial, sans-serif; /* Setting a clean font */
+      text-align: center; /* Center-aligning text */
+      background: url(./2.jpg); /* Setting the background image */
+      background-size: cover; /* Ensures the image covers the whole background */
+      background-position: center; /* Centers the background image */
+    }
+
+    /* Styling for the main heading */
+    h2 {
+      margin-top: 50px; /* Top margin */
+      font-size: 2.5rem; /* Font size */
+      font-weight: bold; /* Bold text */
+      color: rgb(227, 46, 46); /* Red color */
+      margin-bottom: 10px; /* Bottom margin */
+      text-shadow: 1px 4px 10px rgb(207, 99, 99); /* Adds shadow effect to text */
+    }
+
+    /* Paragraph styling for description text */
+    p {
+      font-size: 1.2rem; /* Font size */
+      font-weight: 600; /* Medium weight font */
+      color: #393636; /* Dark gray color */
+      margin-bottom: 20px; /* Bottom margin */
+      line-height: 1.5; /* Line height for readability */
+    }
+    
+    /* Flex container for the search input and button */
+    .search-container {
+      display: flex; /* Align input and button in a row */
+      margin-top: 20px; /* Adds margin above the search container */
+    }
+
+    /* Styling for the search input box */
+    .search-input {
+      padding: 10px; /* Padding inside the input box */
+      font-size: 16px; /* Font size */
+      width: 300px; /* Width of the input box */
+      border: 2px solid #ccc; /* Border with light gray color */
+      border-right: none; /* Removes the right border (for a seamless button connection) */
+      border-radius: 25px 0 0 25px; /* Rounded corners for left side of the input box */
+      outline: none; /* Removes the default focus outline */
+    }
+
+    /* Styling for input box when it is focused */
+    .search-input:focus {
+      border-color: rgb(227, 46, 46); /* Change border color when focused */
+    }
+
+    /* Button styling for the search button */
+    .search-button {
+      padding: 10px 20px; /* Padding inside the button */
+      font-size: 16px; /* Font size */
+      color: white; /* White text color */
+      background-color: rgb(227, 46, 46); /* Red background */
+      border: 2px solid rgb(227, 46, 46); /* Red border */
+      border-radius: 0 25px 25px 0; /* Rounded corners for right side of the button */
+      border-left: none; /* Removes the left border (for a seamless connection with input box) */
+      cursor: pointer; /* Changes cursor to pointer to indicate it's clickable */
+      transition: background-color 0.3s ease; /* Smooth transition for background color change */
+    }
+
+    /* Button hover effect */
+    .search-button:hover {
+      background-color: rgb(227, 46, 46); /* Ensures background color stays red on hover */
+    }
+
+    /* Media query for responsiveness on small screens */
+    @media screen and (min-width:320px) and (max-width:425px) {
+      /* Adjusting the search container for smaller screen sizes */
+      .search-container{
+        width: 100% !important; /* Full width for small screens */
+        padding-left: 5px; /* Padding adjustment */
+        padding-right: 20px; /* Padding adjustment */
+      }
+      /* Adjusting heading margins on smaller screens */
+      h2{
+        margin-top: 100px; /* Adds more top margin */
+        margin-bottom: 25px; /* Bottom margin */
+      }      
+    }
+  </style>
+</head>
+<body>
+  <!-- Main heading -->
+  <h2>Recipe Finder</h2>
+  
+  <!-- Description text -->
+  <p>Search mouth-watering recipes to satisfy your cravings</p>
+  
+  <!-- Search container with input and button -->
+  <div class="search-container">
+    <!-- Text input field for search -->
+    <input type="text" id="search-input" class="search-input" placeholder="Search...">
+    
+    <!-- Search button that triggers the searchRecipes function -->
+    <button class="search-button" onclick="searchRecipes()">Search</button>
+  </div>
+
+  <!-- JavaScript to handle search functionality -->
+  <script>
+    // Function to handle the search
+    function searchRecipes() {
+      // Getting the value of the input field and removing any extra spaces
+      const searchInput = document.getElementById("search-input").value.trim();
+
+      // Check if the input is not empty
+      if (searchInput !== "") {
+        // Redirecting the user to the result page with the search query in the URL
+        window.location.href = `ResultPage.html?query=${encodeURIComponent(searchInput)}`;
+      } else {
+        // If the search input is empty, alert the user
+        alert("Please enter a search term!");
+      }
+    }
+  </script>
+</body>
+</html>

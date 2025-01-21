@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Defining the character encoding as UTF-8. This ensures that characters are correctly rendered across different languages. -->
+    <meta charset="UTF-8" />
+    
+    <!-- Makes the webpage responsive by setting the viewport width to the device's width and setting the initial zoom level. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Sets the title of the webpage, which appears in the browser tab. -->
+    <title>Sign Up | Foodie</title>
+
+    <!-- Preconnect to Google's servers for faster font loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Imports custom fonts from Google Fonts: Nunito and Poppins for better typography. -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
+      rel="stylesheet"
+    />
+    
+    <!-- Sets the favicon for the website (the small icon that appears on the browser tab). -->
+    <link rel="shortcut icon" href="../images/fav.png" type="image/x-icon" />
+
+    <style>
+      /* Resets margin and padding for all elements to ensure consistency across browsers. */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* Styles the body, including background image, centering content using flexbox, and ensuring full viewport height. */
+      body {
+        display: flex; 
+        align-items: center; /* Centers content vertically */
+        justify-content: flex-start; /* Aligns content to the left */
+        font-family: "Poppins", serif; /* Sets the font to Poppins for readability */
+        width: 100%; 
+        min-height: 100vh; /* Ensures the body takes up the full viewport height */
+        background: url(./assets/SignUp.jpg), #f5f5f5; /* Sets a background image with a fallback color */
+        background-size: cover; /* Makes sure the background image covers the entire body */
+        background-position: center; /* Positions the background image in the center */
+      }
+
+      /* Main login container styles: includes width, padding, border, backdrop blur, and positioning */
+      .mainLogin {
+        width: 400px;
+        padding: 30px;
+        margin-top: auto; /* Centers the container vertically */
+        margin-right: 70px;
+        margin-bottom: auto;
+        border: 3px solid black;
+        backdrop-filter: blur(10px); /* Adds a blur effect to the background */
+        border-radius: 8px; /* Rounds the corners of the box */
+        display: grid; /* Uses grid layout */
+        color: white;
+        position: absolute; /* Positioned absolutely to align to the right */
+        right: 0;
+      }
+
+      /* Layout for input fields in a row with a gap between them */
+      .details {
+        display: flex;
+        gap: 20px;
+      }
+
+      /* Header styling: Centers the sign-up and sign-in options with space between them. */
+      .heading {
+        display: flex;
+        justify-content: center; /* Centers the heading horizontally */
+        gap: 10px;
+        color: #1f1f1f; /* Sets text color to dark gray */
+      }
+
+      /* Styling for the links in the header: removes underline and sets color. */
+      .heading a {
+        text-decoration: none;
+        color: #1f1f1f;
+      }
+
+      /* Adds a hover effect for links, changing the text color when hovered. */
+      .heading a:hover {
+        color: #555050; /* Darkens the color slightly on hover */
+      }
+
+      /* Styles the divider between the "Sign Up" and "Sign In" links */
+      .heading #space {
+        font-size: 25px;
+        color: black;
+      }
+
+      /* Flex layout for the form to stack input fields vertically */
+      form {
+        display: flex;
+        flex-direction: column; /* Aligns form items vertically */
+      }
+
+      /* Styles individual input fields, adding a border and margin. */
+      .inputField {
+        position: relative;
+        border-bottom: 2px solid #272626; /* Adds a bottom border for the input fields */
+        margin: 8px 0;
+      }
+
+      /* Styles the input fields inside .inputField, making them full width with no borders. */
+      .inputField input {
+        width: 100%;
+        height: 40px;
+        background: transparent; /* Transparent background */
+        border: none; /* Removes default border */
+        outline: none; /* Removes outline when focused */
+        color: black; /* Sets text color to black */
+        font-size: 20px; /* Sets font size */
+      }
+
+      /* Labels for the input fields, with bold and larger text */
+      .inputField label {
+        font-size: 18px;
+        font-weight: 600; /* Bold text */
+        color: black;
+      }
+
+      /* Styling for the password visibility toggle section */
+      .showPassword {
+        display: flex;
+        justify-content: space-between;
+        margin: 25px 0 35px 0;
+        color: black;
+        font-weight: 600;
+      }
+
+      /* Styles the text for showing/hiding the password */
+      .showPassword p {
+        margin-left: 8px;
+        font-size: 16px;
+      }
+
+      /* Flex container for the password visibility checkbox */
+      .showPassword .checkbox {
+        display: flex;
+      }
+
+      /* Link styles inside the password toggle section */
+      .showPassword a {
+        color: #1f1f1f;
+      }
+
+      /* Button styling: sets the background color, padding, and hover effects. */
+      button {
+        width: 100%;
+        background-color: #1f1f1f;
+        color: white;
+        font-size: 15px;
+        font-weight: 600;
+        padding: 12px 20px;
+        border-radius: 3px;
+        border: 2px solid transparent;
+        cursor: pointer; /* Changes the cursor to a pointer when hovering */
+        transition: 0.3s ease; /* Smooth transition on hover */
+      }
+
+      /* Hover effect for the sign-up button */
+      #signupBtn:hover {
+        background-color: #323131; /* Darkens the background color */
+        border-color: #2a2929; /* Changes the border color */
+        color: white;
+      }
+
+      /* Styles for Google Sign-up button */
+      .btn-google {
+        background-color: #fff;
+        color: #4285f4; /* Sets the text color to Google Blue */
+        border: 1px solid #ccc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 15px;
+      }
+
+      /* Google logo inside the button */
+      .btn-google img {
+        width: 20px;
+        margin-right: 10px;
+        vertical-align: middle; /* Aligns the logo to the center */
+      }
+
+      /* Margin for social buttons */
+      .social-buttons button {
+        display: block;
+        margin: 10px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Main container for the sign-up form -->
+    <div class="mainLogin">
+      <form id="form">
+        <!-- Header with links for "Sign Up" and "Sign In" -->
+        <div class="heading">
+          <a href="signup.html"><h2 style="text-decoration: underline;">Sign Up</h2></a>
+          <h2 id="space">|</h2>
+          <a href="login.html"><h2>Sign In</h2></a>
+        </div>
+
+        <!-- Input fields for First and Last name -->
+        <div class="details">
+          <div class="inputField">
+            <input type="text" id="fName" placeholder="First Name" aria-label="First Name" required />
+          </div>
+          <div class="inputField">
+            <input type="text" id="lName" placeholder="Last Name" aria-label="Last Name" required />
+          </div>
+        </div>
+
+        <!-- Input field for email -->
+        <div class="inputField">
+          <input type="email" id="signupEmail" placeholder="Email" aria-label="Email" required />
+        </div>
+
+        <!-- Input field for password -->
+        <div class="inputField">
+          <input type="password" id="signupPassword" placeholder="Password" aria-label="Password" required />
+        </div>
+
+        <!-- Section to toggle password visibility -->
+        <div class="showPassword">
+          <div class="checkbox">
+            <input type="checkbox" id="checkboxip" />
+            <p id="getPassword">Show Password</p>
+          </div>
+        </div>
+
+        <!-- Submit button for the form -->
+        <button type="submit" id="signupBtn">Sign Up</button>
+
+        <!-- Social buttons for Google sign-up and guest login -->
+        <div class="social-buttons">
+          <button class="btn-google" id="google-signin-btn">
+            <img src="google.png" alt="Google Logo" /> Sign up with Google
+          </button>
+
+          <!-- Guest login button -->
+          <button class="btn-guest" id="guest-login-btn">
+            Continue as Guest
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <script type="module">
+      // Firebase setup and initialization
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+      import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
+      import { getFirestore, setDoc, doc } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
+
+      // Firebase configuration object
+      const firebaseConfig = {
+        apiKey: "AIzaSyA4MvrK7a2o-UZ2yIvhzfpEJKtUcIJVF2E",
+        authDomain: "food-recipe-e3888.firebaseapp.com",
+        projectId: "food-recipe-e3888",
+        storageBucket: "food-recipe-e3888.appspot.com",
+        messagingSenderId: "479682801897",
+        appId: "1:479682801897:web:de37363b938d7bfb800078",
+      };
+
+      // Initialize Firebase app with the given configuration
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app); // Set up Firebase Authentication
+      const provider = new GoogleAuthProvider(); // Set up Google sign-in provider
+
+      // Handle form submission for email sign-up
+      const signupBtn = document.getElementById("form");
+      signupBtn.addEventListener("submit", async function (e) {
+        e.preventDefault(); // Prevent default form submission behavior
+
+        // Get the values from the form fields
+        const firstName = document.getElementById("fName").value.trim();
+        const lastName = document.getElementById("lName").value.trim();
+        const email = document.getElementById("signupEmail").value.trim();
+        const password = document.getElementById("signupPassword").value.trim();
+
+        // Check if both first and last names are provided
+        if (!firstName || !lastName) {
+          alert("Please enter your first and last name.");
+          return;
+        }
+
+        // Try to create a user with email and password
+        try {
+          const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+          const user = userCredential.user;
+          const db = getFirestore(app);
+
+          // Save user data in Firestore
+          await setDoc(doc(db, "users", user.uid), {
+            firstName,
+            lastName,
+            email,
+            createdAt: new Date().toISOString(),
+          });
+
+          // Save user data in localStorage for session persistence
+          localStorage.setItem("userData", JSON.stringify({ firstName, lastName, email }));
+
+          // Alert the user of successful sign-up and redirect them to the login page
+          alert("Signup successful!");
+          window.location.href = "./login.html";
+        } catch (error) {
+          alert(`Signup failed: ${error.message}`);
+        }
+      });
+
+      // Handle Google sign-in button click
+      const googlebtn = document.getElementById("google-signin-btn");
+      googlebtn.addEventListener("click", async function () {
+        try {
+          const result = await signInWithPopup(auth, provider);
+          const user = result.user;
+          const db = getFirestore(app);
+
+          // Retrieve user info from Google sign-in result
+          const firstName = result.additionalUserInfo?.profile?.given_name || "Google";
+          const lastName = result.additionalUserInfo?.profile?.family_name || "User";
+
+          // Save user data in Firestore
+          await setDoc(doc(db, "users", user.uid), {
+            firstName,
+            lastName,
+            email: user.email,
+            createdAt: new Date().toISOString(),
+          });
+
+          // Save Google user data in localStorage
+          localStorage.setItem("userData", JSON.stringify({ firstName, lastName, email: user.email }));
+
+          // Alert and redirect to the main page after successful Google sign-up
+          alert("Signup successful!");
+          window.location.href = "../API/searchPage.html";
+        } catch (error) {
+          alert(`Google sign-up failed: ${error.message}`);
+        }
+      });
+
+      // Handle guest login button click
+      const guestbtn = document.getElementById("guest-login-btn");
+      guestbtn.addEventListener("click", async function () {
+        try {
+          const userCredential = await signInAnonymously(auth);
+          const user = userCredential.user;
+          const db = getFirestore(app);
+
+          // Create a guest user in Firestore
+          await setDoc(doc(db, "users", user.uid), {
+            firstName: "Guest",
+            lastName: "User",
+            email: "guest@guest.com",
+            createdAt: new Date().toISOString(),
+          });
+
+          // Save guest user data in localStorage
+          localStorage.setItem("userData", JSON.stringify({ firstName: "Guest", lastName: "User", email: "guest@guest.com" }));
+
+          // Alert and redirect to main page after guest login
+          alert("Logged in as guest!");
+          window.location.href = "../API/searchPage.html";
+        } catch (error) {
+          alert(`Guest login failed: ${error.message}`);
+        }
+      });
+    </script>
+  </body>
+</html>
