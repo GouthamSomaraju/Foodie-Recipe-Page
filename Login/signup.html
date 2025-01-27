@@ -1,26 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Defining the character encoding as UTF-8. This ensures that characters are correctly rendered across different languages. -->
     <meta charset="UTF-8" />
-    
-    <!-- Makes the webpage responsive by setting the viewport width to the device's width and setting the initial zoom level. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <!-- Sets the title of the webpage, which appears in the browser tab. -->
+
     <title>Sign Up | Foodie</title>
 
-    <!-- Preconnect to Google's servers for faster font loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    
-    <!-- Imports custom fonts from Google Fonts: Nunito and Poppins for better typography. -->
+
     <link
       href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
       rel="stylesheet"
     />
-    
-    <!-- Sets the favicon for the website (the small icon that appears on the browser tab). -->
+
     <link rel="shortcut icon" href="../images/fav.png" type="image/x-icon" />
 
     <style>
@@ -33,11 +26,11 @@
 
       /* Styles the body, including background image, centering content using flexbox, and ensuring full viewport height. */
       body {
-        display: flex; 
+        display: flex;
         align-items: center; /* Centers content vertically */
         justify-content: flex-start; /* Aligns content to the left */
         font-family: "Poppins", serif; /* Sets the font to Poppins for readability */
-        width: 100%; 
+        width: 100%;
         min-height: 100vh; /* Ensures the body takes up the full viewport height */
         background: url(./assets/SignUp.jpg), #f5f5f5; /* Sets a background image with a fallback color */
         background-size: cover; /* Makes sure the background image covers the entire body */
@@ -191,6 +184,96 @@
         display: block;
         margin: 10px 0;
       }
+      @media (max-width: 768px) {
+
+        body{
+        background: url(./assets/cr.jpeg), #f5f5f5; 
+        background-size: cover; /* Makes sure the background image covers the entire body */
+        background-position: center;
+
+        }
+        .mainLogin {
+        width: 90%;
+        max-width: 400px;
+        padding: 20px;
+        margin: 0 auto;
+        border: 3px solid black;
+        backdrop-filter: blur(0px); /* Adds a blur effect to the background */
+        border-radius: 8px; /* Rounds the corners of the box */
+        display: grid; /* Uses grid layout */
+        color: white;
+        position: relative;
+        background-color: rgba(255, 255, 255, 0.7);
+      }
+
+
+        .details {
+          flex-direction: column;
+        }
+
+        .inputField input {
+          font-size: 18px;
+        }
+
+        .heading h2 {
+          font-size: 18px;
+        }
+
+        button {
+          font-size: 14px;
+          padding: 10px;
+        }
+
+        .btn-google {
+        background-color:transparent;
+        
+      }
+      }
+
+      @media (max-width: 480px) {
+
+        body{
+        background: url(./assets/cr.jpeg), #f5f5f5; 
+        background-size: cover; /* Makes sure the background image covers the entire body */
+        background-position: center;
+
+        }
+        .mainLogin {
+        width: 90%;
+        max-width: 400px;
+        padding: 20px;
+        margin: 0 auto;
+        border: 3px solid black;
+        backdrop-filter: blur(0px); /* Adds a blur effect to the background */
+        border-radius: 8px; /* Rounds the corners of the box */
+        display: grid; /* Uses grid layout */
+        color: white;
+        position: relative;
+        /* background-color: rgba(255, 255, 255, 0.7); */
+      }
+
+        .heading h2 {
+          font-size: 16px;
+        }
+
+        .inputField input {
+          font-size: 16px;
+        }
+
+        .showPassword p {
+          font-size: 14px;
+        }
+
+        button {
+          font-size: 13px;
+          padding: 8px;
+        }
+
+        .btn-google {
+        background-color:transparent;
+        
+      }
+      }
     </style>
   </head>
   <body>
@@ -199,7 +282,9 @@
       <form id="form">
         <!-- Header with links for "Sign Up" and "Sign In" -->
         <div class="heading">
-          <a href="signup.html"><h2 style="text-decoration: underline;">Sign Up</h2></a>
+          <a href="signup.html"
+            ><h2 style="text-decoration: underline">Sign Up</h2></a
+          >
           <h2 id="space">|</h2>
           <a href="login.html"><h2>Sign In</h2></a>
         </div>
@@ -207,21 +292,45 @@
         <!-- Input fields for First and Last name -->
         <div class="details">
           <div class="inputField">
-            <input type="text" id="fName" placeholder="First Name" aria-label="First Name" required />
+            <input
+              type="text"
+              id="fName"
+              placeholder="First Name"
+              aria-label="First Name"
+              required
+            />
           </div>
           <div class="inputField">
-            <input type="text" id="lName" placeholder="Last Name" aria-label="Last Name" required />
+            <input
+              type="text"
+              id="lName"
+              placeholder="Last Name"
+              aria-label="Last Name"
+              required
+            />
           </div>
         </div>
 
         <!-- Input field for email -->
         <div class="inputField">
-          <input type="email" id="signupEmail" placeholder="Email" aria-label="Email" required />
+          <input
+            type="email"
+            id="signupEmail"
+            placeholder="Email"
+            aria-label="Email"
+            required
+          />
         </div>
 
         <!-- Input field for password -->
         <div class="inputField">
-          <input type="password" id="signupPassword" placeholder="Password" aria-label="Password" required />
+          <input
+            type="password"
+            id="signupPassword"
+            placeholder="Password"
+            aria-label="Password"
+            required
+          />
         </div>
 
         <!-- Section to toggle password visibility -->
@@ -252,8 +361,18 @@
     <script type="module">
       // Firebase setup and initialization
       import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
-      import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
-      import { getFirestore, setDoc, doc } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
+      import {
+        getAuth,
+        createUserWithEmailAndPassword,
+        GoogleAuthProvider,
+        signInWithPopup,
+        signInAnonymously,
+      } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
+      import {
+        getFirestore,
+        setDoc,
+        doc,
+      } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
 
       // Firebase configuration object
       const firebaseConfig = {
@@ -289,7 +408,11 @@
 
         // Try to create a user with email and password
         try {
-          const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+          const userCredential = await createUserWithEmailAndPassword(
+            auth,
+            email,
+            password
+          );
           const user = userCredential.user;
           const db = getFirestore(app);
 
@@ -302,7 +425,10 @@
           });
 
           // Save user data in localStorage for session persistence
-          localStorage.setItem("userData", JSON.stringify({ firstName, lastName, email }));
+          localStorage.setItem(
+            "userData",
+            JSON.stringify({ firstName, lastName, email })
+          );
 
           // Alert the user of successful sign-up and redirect them to the login page
           alert("Signup successful!");
@@ -321,8 +447,10 @@
           const db = getFirestore(app);
 
           // Retrieve user info from Google sign-in result
-          const firstName = result.additionalUserInfo?.profile?.given_name || "Google";
-          const lastName = result.additionalUserInfo?.profile?.family_name || "User";
+          const firstName =
+            result.additionalUserInfo?.profile?.given_name || "Google";
+          const lastName =
+            result.additionalUserInfo?.profile?.family_name || "User";
 
           // Save user data in Firestore
           await setDoc(doc(db, "users", user.uid), {
@@ -333,7 +461,10 @@
           });
 
           // Save Google user data in localStorage
-          localStorage.setItem("userData", JSON.stringify({ firstName, lastName, email: user.email }));
+          localStorage.setItem(
+            "userData",
+            JSON.stringify({ firstName, lastName, email: user.email })
+          );
 
           // Alert and redirect to the main page after successful Google sign-up
           alert("Signup successful!");
@@ -360,7 +491,14 @@
           });
 
           // Save guest user data in localStorage
-          localStorage.setItem("userData", JSON.stringify({ firstName: "Guest", lastName: "User", email: "guest@guest.com" }));
+          localStorage.setItem(
+            "userData",
+            JSON.stringify({
+              firstName: "Guest",
+              lastName: "User",
+              email: "guest@guest.com",
+            })
+          );
 
           // Alert and redirect to main page after guest login
           alert("Logged in as guest!");

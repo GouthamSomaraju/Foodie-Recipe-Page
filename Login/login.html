@@ -3,26 +3,26 @@
   <head>
     <!-- Set character encoding to UTF-8 to ensure proper text rendering -->
     <meta charset="UTF-8" />
-    
+
     <!-- Make the page responsive by setting the viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+
     <!-- Page title that will show up in the browser tab -->
     <title>Sign In | Foodie</title>
 
     <!-- Preconnect to external font provider (Google Fonts) for faster font loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    
+
     <!-- Import fonts (Nunito and Poppins) for the page styling -->
     <link
       href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-    
+
     <!-- Adding a shortcut icon (favicon) to the browser tab -->
-    <link rel="shortcut icon" href="../images/fav.png" type="image/x-icon">
-    
+    <link rel="shortcut icon" href="../images/fav.png" type="image/x-icon" />
+
     <!-- Internal CSS to style the page layout -->
     <style>
       /* Universal selector to reset margin and padding, and apply box-sizing border-box globally */
@@ -162,6 +162,78 @@
         border-color: #2a2929; /* Dark border on hover */
         color: white; /* Keep text color white */
       }
+
+      @media (max-width: 768px) {
+        body {
+          background: url(./assets/logC.jpeg), #f5f5f5;
+          background-size: cover; /* Makes sure the background image covers the entire body */
+          background-position: center;
+        }
+        .mainLogin {
+          width: 90%;
+          max-width: 400px;
+          padding: 20px;
+          margin: 0 auto;
+          border: 3px solid black;
+          backdrop-filter: blur(0px); /* Adds a blur effect to the background */
+          border-radius: 8px; /* Rounds the corners of the box */
+          display: grid; /* Uses grid layout */
+          color: white;
+          position: relative;
+          background-color: rgba(255, 255, 255, 0.7);
+        }
+
+        .inputField input {
+          font-size: 18px;
+        }
+
+        .heading h2 {
+          font-size: 18px;
+        }
+
+        button {
+          font-size: 14px;
+          padding: 10px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        body {
+          background: url(./assets/logC.jpeg), #f5f5f5;
+          background-size: cover; /* Makes sure the background image covers the entire body */
+          background-position: center;
+        }
+        .mainLogin {
+          width: 90%;
+          max-width: 400px;
+          padding: 20px;
+          margin: 0 auto;
+          border: 3px solid black;
+          backdrop-filter: blur(0px); /* Adds a blur effect to the background */
+          border-radius: 8px; /* Rounds the corners of the box */
+          display: grid; /* Uses grid layout */
+          color: white;
+          position: relative;
+          /* background-color: rgba(255, 255, 255, 0.7); */
+        }
+
+        .heading h2 {
+          font-size: 16px;
+        }
+
+        .inputField input {
+          font-size: 16px;
+        }
+
+        .showPassword p {
+          font-size: 14px;
+        }
+
+        button {
+          font-size: 13px;
+          padding: 8px;
+        }
+      }
     </style>
   </head>
   <body>
@@ -171,9 +243,14 @@
       <form id="form">
         <!-- Heading with links to Sign Up and Sign In pages -->
         <div class="heading">
-          <a href="signup.html"><h2>Sign Up</h2></a> <!-- Link to sign up page -->
-          <h2 id="space">|</h2> <!-- Pipe separator -->
-          <a href="login.html"><h2 style="text-decoration: underline;">Sign In</h2></a> <!-- Current page (Sign In) -->
+          <a href="signup.html"><h2>Sign Up</h2></a>
+          <!-- Link to sign up page -->
+          <h2 id="space">|</h2>
+          <!-- Pipe separator -->
+          <a href="login.html"
+            ><h2 style="text-decoration: underline">Sign In</h2></a
+          >
+          <!-- Current page (Sign In) -->
         </div>
 
         <!-- Input field for email (username) -->
@@ -192,9 +269,11 @@
         <div class="showPassword">
           <div class="checkbox">
             <input type="checkbox" id="checkboxip" />
-            <p id="getPassword">Show Password</p> <!-- Text next to checkbox -->
+            <p id="getPassword">Show Password</p>
+            <!-- Text next to checkbox -->
           </div>
-          <a href="forgotpass.html" id="reset">Forgot Password?</a> <!-- Link to reset password -->
+          <a href="forgotpass.html" id="reset">Forgot Password?</a>
+          <!-- Link to reset password -->
         </div>
 
         <!-- Sign In button -->
@@ -206,8 +285,15 @@
     <script type="module">
       // Import necessary Firebase modules for authentication and Firestore
       import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
-      import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
-      import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
+      import {
+        getAuth,
+        signInWithEmailAndPassword,
+      } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
+      import {
+        getFirestore,
+        doc,
+        getDoc,
+      } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
 
       // Firebase configuration object (replace with your Firebase project details)
       const firebaseConfig = {
@@ -235,7 +321,11 @@
 
         try {
           // Sign in the user using Firebase Authentication
-          const userCredential = await signInWithEmailAndPassword(auth, email, password);
+          const userCredential = await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+          );
           const user = userCredential.user;
 
           // Fetch user data from Firestore

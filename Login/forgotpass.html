@@ -153,6 +153,74 @@
         border-color: #2a2929; /* Darker border on hover */
         color: white; /* Text turns white */
       }
+
+      @media (max-width: 768px) {
+        body {
+          background: url(./assets/ForC.jpeg), #f5f5f5;
+          background-size: cover; /* Makes sure the background image covers the entire body */
+          background-position: center;
+        }
+        .mainLogin {
+          width: 90%;
+          max-width: 400px;
+          padding: 20px;
+          margin: 0 auto;
+          border: 3px solid black;
+          backdrop-filter: blur(0px); /* Adds a blur effect to the background */
+          border-radius: 8px; /* Rounds the corners of the box */
+          display: grid; /* Uses grid layout */
+          color: white;
+          position: relative;
+          background-color: rgba(255, 255, 255, 0.7);
+        }
+
+        .inputField input {
+          font-size: 18px;
+        }
+
+        .heading h2 {
+          font-size: 18px;
+        }
+
+        button {
+          font-size: 14px;
+          padding: 10px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        body {
+          background: url(./assets/ForC.jpeg), #f5f5f5;
+          background-size: cover; /* Makes sure the background image covers the entire body */
+          background-position: center;
+        }
+        .mainLogin {
+          width: 90%;
+          max-width: 400px;
+          padding: 20px;
+          margin: 0 auto;
+          border: 3px solid black;
+          backdrop-filter: blur(0px); /* Adds a blur effect to the background */
+          border-radius: 8px; /* Rounds the corners of the box */
+          display: grid; /* Uses grid layout */
+          color: white;
+          position: relative;
+          /* background-color: rgba(255, 255, 255, 0.7); */
+        }
+
+        .heading h2 {
+          font-size: 16px;
+        }
+
+        .inputField input {
+          font-size: 16px;
+        }
+
+        button {
+          font-size: 13px;
+          padding: 8px;
+        }
+      }
     </style>
   </head>
 
