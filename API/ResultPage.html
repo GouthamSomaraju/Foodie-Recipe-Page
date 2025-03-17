@@ -264,6 +264,15 @@
       </div>
     </div>
 
+    <!-- Popup card that shows detailed information about the recipe -->
+    <div class="popup-card" id="popupCard">
+      <!-- Close button for the popup -->
+      <button class="close-btn" onclick="closeRecipe()">X</button>
+      <!-- Title and description will be dynamically inserted here -->
+      <h3 id="recipeTitle"></h3>
+      <p id="recipeDetails"></p>
+    </div>
+
     <!-- Linking to external logout functionality -->
     <script type="module" src="./logout.js"></script>
 
@@ -303,6 +312,28 @@
             }
           })
           .catch((error) => console.error("Error fetching data:", error));
+      }
+
+      // Function to show details for a selected recipe
+      function viewRecipe(mealId) {
+        const popupCard = document.getElementById("popupCard");
+        const recipeTitle = document.getElementById("recipeTitle");
+        const recipeDetails = document.getElementById("recipeDetails");
+
+        // Fetch recipe details from the API using the mealId
+        fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`)
+          .then((response) => response.json())
+          .then((data) => {
+            const meal = data.meals[0];
+            recipeTitle.innerText = meal.strMeal; // Set the recipe title
+            recipeDetails.innerText = meal.strInstructions; // Set the recipe instructions
+            popupCard.style.display = "block"; // Display the popup card
+          });
+      }
+
+      // Function to close the popup card
+      function closeRecipe() {
+        document.getElementById("popupCard").style.display = "none"; // Hides the popup card
       }
 
       // Toggle the favorite status of a recipe
